@@ -7,4 +7,7 @@ resteasy_simple项目简介：
   HttpClient4.2.1的get、post请求、JUnit单元测试
   JSON数据格式
 
-resteasy_demo项目完善中，写完后也会上传到这里，将包括签名认证自定义Filter、MyBatis、MySQL
+resteasy_demo项目简介：
+  在resteasy_simple基础上，增加自定义过滤器处理签名认
+  结合MyBatis处理数据查询（主要）和持久化
+  数据库为MySQL
