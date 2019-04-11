@@ -1,0 +1,14 @@
+package me.icocoro.spring.quartz.example;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MainLancher {
+	@SuppressWarnings("resource")
+	public static void main(String args[]) {
+		@SuppressWarnings("unused")
+		ApplicationContext context = new ClassPathXmlApplicationContext(
+				"quartz-context.xml");
+	}
+
+}

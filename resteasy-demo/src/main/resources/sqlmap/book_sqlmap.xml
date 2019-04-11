@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Book">
+
+	<select id="getBookById" parameterType="int" resultType="me.icocoro.resteasy.demo.model.Book">
+		select 
+			b.id as id,
+			b.isbn as isbn,
+			b.name as name,
+			a.name as authorName,
+			p.name as publisherName,
+			b.price as price,
+			b.stock as stock,
+			b.smallImage as smallImage,
+			b.bigImage as bigImage,
+			b.introduction as introduction,
+			b.createtime as createtime,
+			b.updatetime as updatetime,
+			b.state as state
+		from book b
+		INNER JOIN author a on b.author_id=a.id
+		INNER JOIN publisher p on b.publisher_id=p.id
+		where b.id=#{id}
+	</select>
+	
+	<select id="getBookList" parameterType="map" resultType="me.icocoro.resteasy.demo.model.Book">
+		select 
+			b.id as id,
+			b.isbn as isbn,
+			b.name as name,
+			a.name as authorName,
+			p.name as publisherName,
+			b.price as price,
+			b.stock as stock,
+			b.smallImage as smallImage,
+			b.bigImage as bigImage,
+			b.introduction as introduction,
+			b.createtime as createtime,
+			b.updatetime as updatetime,
+			b.state as state
+		from book b
+		INNER JOIN author a on b.author_id=a.id
+		INNER JOIN publisher p on b.publisher_id=p.id
+		limit #{start},#{limit}
+	</select>
+	
+	<insert id="addAuthor" parameterType="me.icocoro.resteasy.demo.model.Author">
+		insert into author
+		(name,gender,introduction,parent_id,createtime,updatetime,email,penname)
+		values
+		(#{name},#{gender},#{introduction},#{parentId},#{createtime},#{updatetime},#{email},#{penname})
+	</insert>
+
+</mapper>
